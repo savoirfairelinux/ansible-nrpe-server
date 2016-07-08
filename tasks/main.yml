@@ -1,3 +1,4 @@
 ---
 - include: system.yml
 - include: config.yml
+- include: plugins.yml
