@@ -4,3 +4,7 @@ nagios_nrpe_server_port: 5666
 # The comma-delimited list of IP address or hostnames that are allowed to talk to the NRPE daemon.
 nagios_nrpe_server_allowed_hosts:
   - 127.0.0.1
+# The effective user that the NRPE daemon should run as.
+nagios_nrpe_server_user: nagios
+# The effective group that the NRPE daemon should run as.
+nagios_nrpe_server_group: nagios

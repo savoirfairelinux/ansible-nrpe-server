@@ -26,3 +26,6 @@ Here's an example usage for a local development environment:
       nagios_nrpe_server_allowed_hosts:
         - 127.0.0.1
 ```
+
+
+[ansible-common]: https://gitlab.savoirfairelinux.com/devops/ansible-common
