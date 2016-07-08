@@ -1,0 +1,9 @@
+---
+- name: Ensure required packages for NRPE server are present
+  apt: "name={{ item }} state=present"
+  with_items:
+    - nagios-plugins
+    - nagios-nrpe-server
+
+- name: Ensure that the NRPE server is running and will be started at boot time
+  service: name=nagios-nrpe-server state=started enabled=yes

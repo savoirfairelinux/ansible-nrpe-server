@@ -1,0 +1,9 @@
+---
+- name: Prepare the NRPE configuration
+  template:
+    src: nrpe.cfg
+    dest: /etc/nagios/nrpe.cfg
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart nagios-nrpe-server

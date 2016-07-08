@@ -1,0 +1,6 @@
+---
+# The NRPE port number we should wait for connections on.
+nagios_nrpe_server_port: 5666
+# The comma-delimited list of IP address or hostnames that are allowed to talk to the NRPE daemon.
+nagios_nrpe_server_allowed_hosts:
+  - 127.0.0.1
