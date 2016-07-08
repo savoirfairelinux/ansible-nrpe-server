@@ -1,10 +1,21 @@
+
 ---
 # The NRPE port number we should wait for connections on.
 nagios_nrpe_server_port: 5666
+
 # The comma-delimited list of IP address or hostnames that are allowed to talk to the NRPE daemon.
 nagios_nrpe_server_allowed_hosts:
   - 127.0.0.1
+
 # The effective user that the NRPE daemon should run as.
 nagios_nrpe_server_user: nagios
+
 # The effective group that the NRPE daemon should run as.
 nagios_nrpe_server_group: nagios
+
+# A list of commands to install along with the Nagios NRPE server.
+nagios_nrpe_commands:
+  - name: check_disk
+    command: /usr/lib/nagios/plugins/check_disk -w 20% -c 10%
+  - name: check_mem
+    command: /usr/lib/nagios/plugins/check_mem -u -w 90 -c 95
