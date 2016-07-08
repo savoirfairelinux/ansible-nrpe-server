@@ -5,5 +5,8 @@
     - nagios-plugins
     - nagios-nrpe-server
 
+- name: Ensure that the Nagios NRPE server port is allowed in the iptables
+  iptables: chain=INPUT protocol=tcp destination_port="{{ nagios_nrpe_server_port }}" jump=ACCEPT
+
 - name: Ensure that the NRPE server is running and will be started at boot time
   service: name=nagios-nrpe-server state=started enabled=yes
