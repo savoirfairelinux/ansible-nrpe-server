@@ -25,6 +25,12 @@ Here's an example usage for a local development environment:
       nagios_nrpe_server_port: 5667
       nagios_nrpe_server_allowed_hosts:
         - 127.0.0.1
+      nagios_nrpe_commands:
+        - name: check_disk
+          command: /usr/lib/nagios/plugins/check_disk -w 20% -c 10%
+        - name: check_mem
+          command: /usr/lib/nagios/plugins/check_mem -u -w 90 -c 95
+
 ```
 
 
