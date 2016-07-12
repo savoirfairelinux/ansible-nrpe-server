@@ -17,5 +17,16 @@ nagios_nrpe_server_group: nagios
 nagios_nrpe_commands:
   - name: check_disk
     command: /usr/lib/nagios/plugins/check_disk -w 20% -c 10%
-  - name: check_mem
-    command: /usr/lib/nagios/plugins/check_mem -u -w 90 -c 95
+
+# Whether to install the check_mem command
+nagios_nrpe_checkmem_enable: no
+
+# Name of the check_mem command
+nagios_nrpe_checkmem_command_name: check_mem
+
+# Arguments of the check_mem command
+nagios_nrpe_checkmem_command_args: "-u -w 90 -c 95"
+
+# URL of the check_mem script
+nagios_nrpe_checkmem_url: https://raw.githubusercontent.com/justintime/nagios-plugins/a57fe5ea59379c6139de7b68c18fdb0bf675b416/check_mem/check_mem.pl
+

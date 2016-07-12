@@ -1,8 +1,9 @@
 ---
 - name: Install the check_mem NRPE plugin
   get_url:
-    url: https://raw.githubusercontent.com/justintime/nagios-plugins/master/check_mem/check_mem.pl
+    url: "{{ nagios_nrpe_checkmem_url }}"
     dest: /usr/lib/nagios/plugins/check_mem
     owner: root
     group: root
     mode: u=rwx,g=rx,o=rx
+  when: "{{ nagios_nrpe_checkmem_enable }}"
