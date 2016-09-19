@@ -7,7 +7,6 @@
     group: root
     mode: u=rwx,g=rx,o=rx
 
-
 - name: Install the check_cpu NRPE plugin
   get_url:
     url: "{{ nagios_nrpe_checkcpu_url }}"

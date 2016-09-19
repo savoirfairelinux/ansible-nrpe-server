@@ -15,18 +15,32 @@ nagios_nrpe_server_group: nagios
 
 # A list of commands to install along with the Nagios NRPE server.
 nagios_nrpe_commands:
+  # check the free space for each mount point. Warning if the space is less than 20%, critical if less than 10%
   - name: check_disk
     command: /usr/lib/nagios/plugins/check_disk -w 20% -c 10%
+  # Check the system load average for the last 1, 5 and 15min.
+  # For the last minute, warning if more than 15, critical if more than 30
+  # For the last 5 minutes, warning if more than 10, critical if more than 25
+  # For the last 15 minutes, warning if more than 5, critical if more than 20
   - name: check_load
     command: /usr/lib/nagios/plugins/check_load -r -w 15,10,5 -c 30,25,20
+  # Check the delta in seconde between the clock of the system and the clock give by pool.ntp.org
+  # warning if more than 0.5 s, critical if more than 1 s
   - name: check_ntp_time
     command: /usr/lib/nagios/plugins/check_ntp_time -w 0.5 -c 1 -t 60 -H pool.ntp.org -q
+  # On the last second, give the percentage the cpu was in user, nice, system, iowait, irq, softirq and idle
+  # The value is not very precise, it is more an indicator to see the evolution of the cpu usage for each mode
+  # They are no trigger for warning and critical
   - name: check_cpu
     command: /usr/lib/nagios/plugins/check_cpu
+  # Give the input and output traffic on network interface (ignoring the loopback interface).
+  # They are no trigger for warning and critical
   - name: check_traffic
     command: /usr/lib/nagios/plugins/check_traffic -f --ignore-lo
+  # Check the free space in swap. Warning if it's less than 75%, critical for 50%
   - name: check_swap
     command: /usr/lib/nagios/plugins/check_swap -w 75% -c 50%
+  # Check the free ram of the system (OS caches is count as free memory). Warning if it's less than 20 %, critical for 5%
   - name: check_mem
     command: /usr/lib/nagios/plugins/check_mem -C -f -w 20 -c 5
 
