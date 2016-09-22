@@ -6,4 +6,20 @@
     owner: root
     group: root
     mode: u=rwx,g=rx,o=rx
-  when: "{{ nagios_nrpe_checkmem_enable }}"
+
+- name: Install the check_cpu NRPE plugin
+  get_url:
+    url: "{{ nagios_nrpe_checkcpu_url }}"
+    dest: /usr/lib/nagios/plugins/check_cpu
+    checksum: sha256:26c65610e25a4fdc8d2311e89d5510fb215ff0dc1e98b057830e54bcdd0c8afa
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
+
+- name: Install the check_traffic NRPE plugin
+  get_url:
+    url: "{{ nagios_nrpe_checktraffic_url }}"
+    dest: /usr/lib/nagios/plugins/check_traffic
+    owner: root
+    group: root
+    mode: u=rwx,g=rx,o=rx
