@@ -44,6 +44,8 @@ nagios_nrpe_commands:
   - name: check_mem
     command: /usr/lib/nagios/plugins/check_mem -C -f -w 20 -c 5
 
+nagios_nrpe_specific_host_commands: []
+
 # URL of the check_mem script
 nagios_nrpe_checkmem_url: https://raw.githubusercontent.com/justintime/nagios-plugins/a57fe5ea59379c6139de7b68c18fdb0bf675b416/check_mem/check_mem.pl
 nagios_nrpe_checkcpu_url: https://exchange.nagios.org/components/com_mtree/attachment.php?link_id=580&cf_id=29
