@@ -2,6 +2,7 @@
 - name: Ensure required packages for NRPE server are present
   apt: "name={{ item }} state=present"
   with_items:
+    - iptables
     - nagios-plugins
     - nagios-nrpe-server
     - python-dev
