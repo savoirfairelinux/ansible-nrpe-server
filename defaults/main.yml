@@ -27,7 +27,7 @@ nagios_nrpe_commands:
   # Check the delta in seconde between the clock of the system and the clock give by pool.ntp.org
   # warning if more than 0.5 s, critical if more than 1 s
   - name: check_ntp_time
-    command: /usr/lib/nagios/plugins/check_ntp_time -w 0.5 -c 1 -t 60 -H pool.ntp.org -q
+    command: /usr/lib/nagios/plugins/check_ntp_time -w 0.5 -c 1 -t 60 -H ntp.ovh.net -q
   # On the last second, give the percentage the cpu was in user, nice, system, iowait, irq, softirq and idle
   # The value is not very precise, it is more an indicator to see the evolution of the cpu usage for each mode
   # They are no trigger for warning and critical
