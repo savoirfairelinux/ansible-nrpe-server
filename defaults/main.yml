@@ -44,6 +44,10 @@ nagios_nrpe_commands:
   - name: check_mem
     command: /usr/lib/nagios/plugins/check_mem -C -f -w 20 -c 5
 
+# Like a nagios_nrpe_commands, but specific for each host. We add two optionnal parameters: user and file
+# This parameters are used if a command must be run as root or specific user.
+# Its add a rules in /etc/sudoers of the following template :
+# {{nagios_nrpe_server_user}} ALL=({{commands.user}}) NOPASSWD:{{ commands.file }}
 nagios_nrpe_specific_host_commands: []
 
 # URL of the check_mem script
