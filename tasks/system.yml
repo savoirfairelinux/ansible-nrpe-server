@@ -18,9 +18,7 @@
 - name: Ensure that the NRPE server is running and will be started at boot time
   service: name=nagios-nrpe-server state=started enabled=yes
 
-- name: Ensure that nagios user have root rigth on the script check_file_age
-  lineinfile:
-    dest: /etc/sudoers
-    regexp: "^{{nagios_nrpe_server_user}}"
-    insertafter: "EOF"
-    line: "{{nagios_nrpe_server_user}} ALL=(ALL) NOPASSWD:/usr/lib/nagios/plugins/check_file_age"
+- name: Configure the rigth for the nrpe user
+  template:
+    src: nrpe_right.cfg
+    dest: /etc/sudoers.d/{{nagios_nrpe_server_user}}
