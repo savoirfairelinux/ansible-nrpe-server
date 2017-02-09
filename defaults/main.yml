@@ -16,8 +16,10 @@ nagios_nrpe_server_group: nagios
 # A list of commands to install along with the Nagios NRPE server.
 nagios_nrpe_commands:
   # check the free space for each mount point. Warning if the space is less than 20%, critical if less than 10%
+  # We add -A -i '/sys' due to problem appear after an apt autoremove
+  # http://www.rfc3092.net/2015/12/nagios-check_disk-foo-on-ubuntu-15-10/
   - name: check_disk
-    command: /usr/lib/nagios/plugins/check_disk -w 20% -c 10%
+    command: /usr/lib/nagios/plugins/check_disk -w 20% -c 10%  -A -i '/sys'
   # Check the system load average for the last 1, 5 and 15min.
   # For the last minute, warning if more than 15, critical if more than 30
   # For the last 5 minutes, warning if more than 10, critical if more than 25
