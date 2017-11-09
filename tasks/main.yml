@@ -1,4 +1,4 @@
 ---
-- include: system.yml
-- include: config.yml
-- include: plugins.yml
+- include_tasks: system.yml
+- include_tasks: config.yml
+- include_tasks: plugins.yml
